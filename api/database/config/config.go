@@ -33,6 +33,10 @@ func BuildDNS() gorm.Dialector {
 		dbname = "supertest"
 	}
 
-	return mysql.Open(fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&loc=Local",
-		 user, pass, host, port, dbname))
+	dns := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&loc=Local",
+		user, pass, host, port, dbname)
+
+	fmt.Println("dbs: ", dns)
+
+	return mysql.Open(dns)
 }

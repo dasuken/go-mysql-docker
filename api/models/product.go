@@ -18,10 +18,10 @@ type Product struct {
 	Quantity   uint16        `gorm:"default:0;unsigned" json:"quantity"`
 	Status     ProductStatus `gorm:"char(1);default:0" json:"status"`
 	CategoryID uint64        `gorm:"not null" json:"category_id"`
+ 	Category   Category		 `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;foreignKey:CategoryID;references:ID;"`
 }
 
 /*
-
 CREATE TABLE `products` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -36,7 +36,6 @@ CREATE TABLE `products` (
   KEY `fk_categories_products` (`category_id`),
   CONSTRAINT `fk_categories_products` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
 )
-
 */
 
 var (
