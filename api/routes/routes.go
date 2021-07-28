@@ -2,6 +2,7 @@ package routes
 
 import (
 	"github.com/gorilla/mux"
+	"github.com/noguchidaisuke/go-mysql-docker/api/middlewares"
 	"net/http"
 )
 
@@ -13,6 +14,7 @@ type Route struct {
 
 func Install(router *mux.Router, routeList []*Route) {
 	for _, route := range routeList {
-		router.HandleFunc(route.Path, route.Handler).Methods(route.Method)
+		handler := middlewares.Logger(route.Handler)
+		router.HandleFunc(route.Path, handler).Methods(route.Method)
 	}
 }

@@ -1,0 +1,13 @@
+{
+    "name": "go-mysql-docker",
+    "todos": [
+        {
+            "done": false,
+            "title": "p_crud"
+        },
+        {
+            "done": false,
+            "title": "c_crud"
+        }
+    ]
+}

@@ -2,6 +2,8 @@ package utils
 
 import (
 	"encoding/json"
+	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -15,4 +17,13 @@ func WriteError(w http.ResponseWriter, err error, statusCode int) {
 	WriteAsJson(w, struct {
 		Error string `json:"error"`
 	}{Error: err.Error()})
+}
+
+func Debug(data interface{}) {
+	bytes, err := json.Marshal(data)
+	if err != nil {
+		log.Println(err)
+	} else {
+		fmt.Println(string(bytes))
+	}
 }

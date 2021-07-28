@@ -5,7 +5,7 @@ import "errors"
 type Category struct {
 	Model
 	Description string     `gorm: "size:256;not null; unique" json:"description"`
-	//Products    []*Product `gorm:"foreignKey:CategoryID" json:"products"`
+	Products    []*Product `json:"products"`
 }
 
 /*
