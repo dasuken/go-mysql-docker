@@ -2,12 +2,16 @@
     "name": "go-mysql-docker",
     "todos": [
         {
-            "done": false,
+            "done": true,
             "title": "p_crud"
         },
         {
-            "done": false,
+            "done": true,
             "title": "c_crud"
+        },
+        {
+            "done": false,
+            "title": "add_paginate"
         }
     ]
 }

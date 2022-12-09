@@ -22,6 +22,7 @@ type ProductsController interface {
 
 type productsControllerImpl struct {
 	productsRepository repository.ProductsRepository
+	paginationBuilder  repository.PaginationBuilderRepository
 }
 
 func NewProductsController(productsRepository repository.ProductsRepository) ProductsController {
@@ -89,48 +90,6 @@ func (c *productsControllerImpl) GetAllProducts(w http.ResponseWriter, r *http.R
 }
 
 func (c *productsControllerImpl) PutProduct(w http.ResponseWriter, r *http.Request) {
-	//params := mux.Vars(r)
-	//
-	//product_id, err := strconv.ParseUint(params["product_id"], 10, 64)
-	//if err != nil {
-	//	utils.WriteError(w, err, http.StatusBadRequest)
-	//	return
-	//}
-	//
-	//if r.Body != nil {
-	//	defer r.Body.Close()
-	//}
-	//
-	//bytes, err := ioutil.ReadAll(r.Body)
-	//if err != nil {
-	//	utils.WriteError(w, err, http.StatusUnprocessableEntity)
-	//	return
-	//}
-	//
-	//product := &models.Product{}
-	//err = json.Unmarshal(bytes, product)
-	//if err != nil {
-	//	utils.WriteError(w, err, http.StatusUnprocessableEntity)
-	//	return
-	//}
-	//
-	//product.ID = product_id
-	//
-	//err = product.Validate()
-	//if err != nil {
-	//	utils.WriteError(w, err, http.StatusBadRequest)
-	//	return
-	//}
-	//
-	//product.CheckStatus()
-	//
-	//err = c.productsRepository.Update(product)
-	//if err != nil {
-	//	utils.WriteError(w, err, http.StatusUnprocessableEntity)
-	//	return
-	//}
-	//
-	//utils.WriteAsJson(w, map[string]bool{"success": err == nil})
 	params := mux.Vars(r)
 
 	product_id, err := strconv.ParseUint(params["product_id"], 10, 64)
